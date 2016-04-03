@@ -174,7 +174,7 @@ module.exports = (robot) ->
     msg.reply "Telling Heroku to migrate #{appName}"
 
     heroku.apps(appName).dynos().create
-      command: "rake db:migrate"
+      command: "python manage.py migrate"
       attach: false
     , (error, dyno) ->
       respondToUser(msg, error, "Heroku: Running migrations for #{appName}")
